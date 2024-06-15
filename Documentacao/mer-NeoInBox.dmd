@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="mer-challenge-localweb" id="B34966EE-3082-AF1E-84C4-085954B2D9E7" version="3.5">
+<createdBy>what_</createdBy>
+<createdTime>2024-06-10 22:13:52 UTC</createdTime>
+<ownerDesignName>mer-challenge-localweb</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>B34966EE-3082-AF1E-84C4-085954B2D9E7</designId>
+</OSDM_Design>
