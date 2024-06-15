@@ -1,6 +1,3 @@
-
-
-
 package br.com.fiap.neoinbox
 
 import android.os.Bundle
