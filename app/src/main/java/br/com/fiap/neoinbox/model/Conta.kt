@@ -15,5 +15,5 @@ data class Conta(
     var endEmail: String = "",
     var senha: String = "",
     @ColumnInfo(name = "nm_telefone")
-    var nmTelefone: Int = 0
+    var nmTelefone: Long = 0
 )

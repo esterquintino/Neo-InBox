@@ -1,10 +1,16 @@
 package br.com.fiap.neoinbox.cadastro
 
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import br.com.fiap.neoinbox.database.repository.ContaRepository
+import br.com.fiap.neoinbox.model.Conta
+import kotlinx.coroutines.launch
 
 class CadastroScreenViewModel: ViewModel() {
+
     private val _nome = MutableLiveData<String>()
     val nome: LiveData<String> = _nome
 
@@ -18,7 +24,10 @@ class CadastroScreenViewModel: ViewModel() {
     val senha: LiveData<String> = _senha
 
     private val _nrtelefone = MutableLiveData<Long>()
-    val nrtelefone: LiveData<Long> get() = _nrtelefone
+    val nrtelefone: LiveData<Long> = _nrtelefone
+
+    private val _isContaSalva = MutableLiveData<Boolean>()
+    val isContaSalva: LiveData<Boolean> = _isContaSalva
 
     fun onNomeChanged(novoNome:String){
         _nome.value = novoNome
@@ -39,8 +48,15 @@ class CadastroScreenViewModel: ViewModel() {
         _nrtelefone.value = novoNrTelefone
     }
 
-    fun cadastrarContaViewModel(): Boolean {
-        // logica de cadastro
-        return true
+    fun cadastrarContaViewModel(): Conta{
+        val conta = Conta(
+            codConta = 0,
+            nome = _nome.value!!,
+            sobrenome = _sobrenome.value!!,
+            endEmail = _email.value!!,
+            senha = _senha.value!!,
+            nmTelefone = _nrtelefone.value!!
+        )
+        return conta
     }
 }
