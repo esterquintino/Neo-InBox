@@ -18,8 +18,8 @@ interface ContaDao {
     @Delete
     fun excluirConta(conta: Conta): Int
 
-    @Query("SELECT * FROM tbl_conta WHERE cod_Conta = :id")
-    fun buscarConta(id: Int): Conta
+    @Query("SELECT COUNT(*) FROM tbl_conta WHERE end_email = :email AND senha = :senha")
+    fun entrarNaConta(email: String, senha: String): Int
 
     @Update
     fun recuperarSenha(conta: Conta): Int

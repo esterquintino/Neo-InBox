@@ -11,6 +11,9 @@ class EntrarScreenViewModel: ViewModel() {
     private val _senha = MutableLiveData<String>()
     val senha: LiveData<String> = _senha
 
+    private val _entrarSucesso = MutableLiveData<Boolean>()
+    val entrarSucesso: LiveData<Boolean> = _entrarSucesso
+
     fun onEmailChanged(novoEmail:String){
         _email.value = novoEmail
     }
@@ -19,9 +22,11 @@ class EntrarScreenViewModel: ViewModel() {
         _senha.value = novaSenha
     }
 
-    fun entrarNaContaViewModel(): Boolean {
-        //navController.navigate("home")
-        return true
+    fun entrarNaContaViewModel(): Pair<String, String> {
+        val email = _email.value!!
+        val senha = _senha.value!!
+        return Pair(email, senha)
     }
+
 
 }

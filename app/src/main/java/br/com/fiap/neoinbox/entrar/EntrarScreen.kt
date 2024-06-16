@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -25,6 +26,7 @@ import androidx.navigation.NavController
 import br.com.fiap.neoinbox.R
 import br.com.fiap.neoinbox.components.CaixaDeEntrada
 import br.com.fiap.neoinbox.components.Link
+import br.com.fiap.neoinbox.database.repository.ContaRepository
 import br.com.fiap.neoinbox.ui.theme.Inter
 
 @Composable
@@ -32,6 +34,9 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
 
     val email by entrarScreenViewModel.email.observeAsState(initial = "")
     val senha by entrarScreenViewModel.senha.observeAsState(initial = "")
+
+    val context = LocalContext.current
+    val contaRepository = ContaRepository(context)
 
     Box(
         modifier = Modifier
@@ -74,14 +79,17 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
                 modifier = Modifier
                     .padding(4.dp),
                 onClick = {
-                    if(entrarScreenViewModel.entrarNaContaViewModel()) navController.navigate("EntradaScreen")
+                    val (email, senha) = entrarScreenViewModel.entrarNaContaViewModel()
+                    val entrarCheck = contaRepository.entrarNaConta(email, senha)
+                    if(entrarCheck > 0) navController.navigate("EntradaScreen")
+
                 },
             ) {
                 Text(text = "Entrar")
             }
             Spacer(modifier = Modifier.height(32.dp))
             Link(
-                onclick = {navController.navigate("recuperarSenha")},
+                onclick = { navController.navigate("recuperarSenha") },
                 text = "Esqueceu sua senha",
                 modifier = Modifier
                     .padding(4.dp),
@@ -98,7 +106,7 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
                 fontsize = 16,
                 textcolor = colorResource(id = R.color.cinzaescuro),
                 textalign = TextAlign.Center,
-                onclick = {navController.navigate("cadastro")}
+                onclick = { navController.navigate("cadastro") }
             )
             Spacer(modifier = Modifier.height(32.dp))
             Row(

@@ -19,8 +19,8 @@ class ContaRepository (context: Context) {
         return db.excluirConta(conta = conta)
     }
 
-    fun buscarConta(id: Int): Conta{
-        return db.buscarConta(id = id)
+    fun entrarNaConta(email: String, senha: String): Int{
+        return db.entrarNaConta(email = email, senha = senha)
     }
 
     fun recuperarSenha(conta: Conta): Int{
