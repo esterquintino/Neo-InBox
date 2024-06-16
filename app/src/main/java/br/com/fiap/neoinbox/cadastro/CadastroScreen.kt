@@ -49,7 +49,6 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             CaixaDeEntrada(
-                label = "Digite seu nome",
                 placeholder = "Nome",
                 value = nome,
                 keyboardType = KeyboardType.Text,
@@ -61,7 +60,6 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
                 }
             )
             CaixaDeEntrada(
-                label = "Digite seu sobrenome",
                 placeholder = "Sobrenome",
                 value = sobrenome,
                 keyboardType = KeyboardType.Text,
@@ -73,7 +71,6 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
                 }
             )
             CaixaDeEntrada(
-                label = "Digite um endereço de email",
                 placeholder = "Endereço de email",
                 value = email,
                 keyboardType = KeyboardType.Email,
@@ -85,7 +82,6 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
                 }
             )
             CaixaDeEntrada(
-                label = "Digite sua senha",
                 placeholder = "Senha",
                 value = senha,
                 keyboardType = KeyboardType.Password,
@@ -97,7 +93,6 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
                 }
             )
             CaixaDeEntrada(
-                label = "Digite seu número de telefone",
                 placeholder = "Telefone",
                 value = inputText,
                 keyboardType = KeyboardType.Decimal,
