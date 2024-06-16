@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.time.LocalDate
 
 @Entity(
     tableName = "tbl_email",
@@ -34,6 +35,10 @@ data class Email(
     var endRemetente: String = "",
     @ColumnInfo(name = "end_destinatario")
     var endDestinatario: String = "",
+    @ColumnInfo(name = "dt_email")
+    var dtEmail: LocalDate,
+    @ColumnInfo(name = "hr_email")
+    var hrEmail: Int,
     @ColumnInfo(name = "end_destinatario_cc")
     var endDestinatarioCC: String = "",
     @ColumnInfo(name = "cod_pasta_fk")
