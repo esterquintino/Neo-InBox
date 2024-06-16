@@ -23,7 +23,7 @@ interface EmailDao {
     fun verEmail(codEmail: Long, codContaFK: Long): Email
 
     @Query("SELECT * FROM tbl_email WHERE cod_conta_fk = :codContaFK ORDER BY dt_email, hr_email ASC")
-    fun verTodosOsEmails(codEmail: Long, codContaFK: Long): List<Email>
+    fun verTodosOsEmails(codContaFK: Long): List<Email>
 
     @Query("SELECT * FROM tbl_email WHERE cod_conta_fk = :codContaFK AND cod_pasta_fk = :codPastaFK ORDER BY dt_email, hr_email ASC")
     fun verPasta(codEmail: Long, codContaFK: Long, codPastaFK: Long): List<Email>

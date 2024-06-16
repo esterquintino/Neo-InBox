@@ -79,7 +79,7 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
             )
             Spacer(modifier = Modifier.height(32.dp))
             CaixaDeEntrada(
-                    placeholder = "E-mail",
+                placeholder = "E-mail",
                 value = email,
                 keyboardType = KeyboardType.Email,
                 modifier = Modifier
@@ -106,16 +106,17 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
                 onclick = {
                     val (email, senha) = entrarScreenViewModel.entrarNaContaViewModel()
                     val entrarCheck = contaRepository.entrarNaConta(email, senha)
-                    if(entrarCheck > 0) navController.navigate("entrada")                },
-            text = "Entrar"
+                    if (entrarCheck > 0) navController.navigate("entrada")
+                },
+                text = "Entrar"
             )
             Spacer(modifier = Modifier.height(32.dp))
             Link(
-                onclick = {navController.navigate("recuperarSenha")},
+                onclick = { navController.navigate("recuperarSenha") },
                 text = "Esqueceu sua senha?",
                 modifier = Modifier
                     .padding(4.dp),
-                fontfamily = FontFamily(Font(R.font.inter_medium)) ,
+                fontfamily = FontFamily(Font(R.font.inter_medium)),
                 fontsize = 16,
                 textcolor = colorResource(id = R.color.cinzaescuro),
                 textalign = TextAlign.Center,
@@ -128,7 +129,7 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
                 fontsize = 16,
                 textcolor = colorResource(id = R.color.cinzaescuro),
                 textalign = TextAlign.Center,
-                onclick = {navController.navigate("cadastro")}
+                onclick = { navController.navigate("cadastro") }
             )
             Spacer(modifier = Modifier.height(32.dp))
             Row(
