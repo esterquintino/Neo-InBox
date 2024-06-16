@@ -13,6 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import br.com.fiap.neoinbox.entrar.EntrarScreen
+import br.com.fiap.neoinbox.entrar.EntrarScreenViewModel
 import br.com.fiap.neoinbox.ui.theme.NeoInboxTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Loading()
+                    EntrarScreen(EntrarScreenViewModel())
                 }
             }
         }

@@ -7,7 +7,7 @@ import br.com.fiap.neoinbox.model.Conta
 class ContaRepository (context: Context) {
     var db = ContaDb.getDatabase(context).contaDao()
 
-    fun salvarConta(conta: Conta): Int{
+    fun salvarConta(conta: Conta): Long{
         return db.salvarConta(conta = conta)
     }
 

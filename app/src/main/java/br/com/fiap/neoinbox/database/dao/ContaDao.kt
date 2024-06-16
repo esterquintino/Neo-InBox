@@ -10,7 +10,7 @@ import br.com.fiap.neoinbox.model.Conta
 @Dao
 interface ContaDao {
     @Insert
-    fun salvarConta(conta: Conta): Int
+    fun salvarConta(conta: Conta): Long
 
     @Update
     fun atualizarConta(conta: Conta): Int
