@@ -17,6 +17,8 @@ import androidx.navigation.NavHost
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.com.fiap.neoinbox.cadastro.CadastroScreen
+import br.com.fiap.neoinbox.cadastro.CadastroScreenViewModel
 import br.com.fiap.neoinbox.entrar.EntrarScreen
 import br.com.fiap.neoinbox.entrar.EntrarScreenViewModel
 import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreen
@@ -54,7 +56,7 @@ fun AppNavHost(){
             RecuperarSenhaScreen(navController = navController, recuperarSenhaScreenViewModel = RecuperarSenhaScreenViewModel())
         }
         composable("cadastro") {
-           // CadastroScreen(navController = navController)
+            CadastroScreen(navController = navController, cadastroScreenViewModel = CadastroScreenViewModel())
         }
         composable("home") {
             //HomeScreen(navController = navController)
