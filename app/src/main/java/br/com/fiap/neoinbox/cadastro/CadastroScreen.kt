@@ -18,12 +18,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.fiap.neoinbox.R
 import br.com.fiap.neoinbox.components.CaixaDeEntrada
 import br.com.fiap.neoinbox.components.Fundo
+import br.com.fiap.neoinbox.components.Botao
+import br.com.fiap.neoinbox.components.BotaoVoltar
 import br.com.fiap.neoinbox.database.repository.ContaRepository
 
 @Composable
@@ -48,6 +56,23 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ){
+            BotaoVoltar(
+                modifier = Modifier.align(Alignment.Start),
+                onclick = {
+                    navController.navigate("entrar")
+                }
+            )
+            Spacer(modifier = Modifier.height(48.dp))
+            Text(
+                text = "Criar sua conta",
+                modifier = Modifier.align(Alignment.Start),
+                style = TextStyle(
+                    fontFamily = FontFamily(Font(R.font.inter_semibold)),
+                    fontSize = 32.sp,
+                    color = (colorResource(id = R.color.cinzaescuro)),
+                )
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             CaixaDeEntrada(
                 placeholder = "Nome",
                 value = nome,
@@ -71,7 +96,7 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
                 }
             )
             CaixaDeEntrada(
-                placeholder = "Endereço de email",
+                placeholder = "E-mail",
                 value = email,
                 keyboardType = KeyboardType.Email,
                 modifier = Modifier
@@ -106,16 +131,15 @@ fun CadastroScreen(navController: NavController, cadastroScreenViewModel: Cadast
                 }
             )
             Spacer(modifier = Modifier.height(32.dp))
-            Button(
+            Botao(
                 modifier = Modifier
                     .padding(4.dp),
-                onClick = {
+                onclick = {
                     contaRepository.salvarConta(cadastroScreenViewModel.cadastrarContaViewModel())
                     navController.navigate("entrar")
                 },
-            ) {
-                Text(text = "Cadastrar")
-            }
+                text = "Cadastrar"
+            )
         }
     }
 }
