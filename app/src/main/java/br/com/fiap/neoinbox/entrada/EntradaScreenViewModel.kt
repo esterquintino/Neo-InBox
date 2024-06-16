@@ -1,4 +1,7 @@
 package br.com.fiap.neoinbox.entrada
 
-class EntradaScreenViewModel {
+import androidx.lifecycle.ViewModel
+
+class EntradaScreenViewModel: ViewModel() {
+
 }

@@ -19,6 +19,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.neoinbox.cadastro.CadastroScreen
 import br.com.fiap.neoinbox.cadastro.CadastroScreenViewModel
+import br.com.fiap.neoinbox.entrada.EntradaScreen
+import br.com.fiap.neoinbox.entrada.EntradaScreenViewModel
 import br.com.fiap.neoinbox.entrar.EntrarScreen
 import br.com.fiap.neoinbox.entrar.EntrarScreenViewModel
 import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreen
@@ -58,9 +60,9 @@ fun AppNavHost(){
         composable("cadastro") {
             CadastroScreen(navController = navController, cadastroScreenViewModel = CadastroScreenViewModel())
         }
-        composable("home") {
-            //HomeScreen(navController = navController)
+        composable("entrada") {
+            EntradaScreen(navController = navController, entradaScreenViewModel = EntradaScreenViewModel())
         }
-        // Adicione outras rotas conforme necessário
+        // Outras rotas
     }
 }
