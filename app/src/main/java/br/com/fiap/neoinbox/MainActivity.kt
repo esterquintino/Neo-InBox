@@ -13,8 +13,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.neoinbox.entrar.EntrarScreen
 import br.com.fiap.neoinbox.entrar.EntrarScreenViewModel
+import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreen
+import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreenViewModel
 import br.com.fiap.neoinbox.ui.theme.NeoInboxTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    EntrarScreen(EntrarScreenViewModel())
+                    AppNavHost()
                 }
             }
         }
@@ -35,25 +41,24 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Loading() {
-   Column {
-       Row {
-           Text(
-               text = "Hello User!",
-           )
-       }
-       Row {
-           Button(onClick = { /*TODO*/ } ) {
-               Text(text = "Seguir ->")
-           }
-       }
-   }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun LoadingPreview() {
-    NeoInboxTheme {
-        Loading()
+fun AppNavHost(){
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = "entrar"
+    ) {
+        composable("entrar") {
+            EntrarScreen(navController = navController, entrarScreenViewModel = EntrarScreenViewModel())
+        }
+        composable("recuperarSenha") {
+            RecuperarSenhaScreen(navController = navController, recuperarSenhaScreenViewModel = RecuperarSenhaScreenViewModel())
+        }
+        composable("cadastro") {
+           // CadastroScreen(navController = navController)
+        }
+        composable("home") {
+            //HomeScreen(navController = navController)
+        }
+        // Adicione outras rotas conforme necessário
     }
 }

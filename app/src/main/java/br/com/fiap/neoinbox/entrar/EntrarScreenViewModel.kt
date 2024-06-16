@@ -19,8 +19,9 @@ class EntrarScreenViewModel: ViewModel() {
         _senha.value = novaSenha
     }
 
-    fun entrarNaContaJurosViewModel() {
-        TODO("Not yet implemented")
+    fun entrarNaContaViewModel(): Boolean {
+        //navController.navigate("home")
+        return true
     }
 
 }
