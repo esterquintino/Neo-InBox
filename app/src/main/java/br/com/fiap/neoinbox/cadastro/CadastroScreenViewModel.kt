@@ -17,8 +17,8 @@ class CadastroScreenViewModel: ViewModel() {
     private val _senha = MutableLiveData<String>()
     val senha: LiveData<String> = _senha
 
-    private val _nrtelefone = MutableLiveData<Int>()
-    val nrtelefone: LiveData<Int> = _nrtelefone
+    private val _nrtelefone = MutableLiveData<Long>()
+    val nrtelefone: LiveData<Long> get() = _nrtelefone
 
     fun onNomeChanged(novoNome:String){
         _nome.value = novoNome
@@ -35,7 +35,7 @@ class CadastroScreenViewModel: ViewModel() {
         _senha.value = novaSenha
     }
 
-    fun onNrTelefoneChanged(novoNrTelefone:Int){
+    fun onNrTelefoneChanged(novoNrTelefone:Long){
         _nrtelefone.value = novoNrTelefone
     }
 
