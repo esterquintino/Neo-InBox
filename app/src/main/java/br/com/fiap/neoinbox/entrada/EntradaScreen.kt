@@ -49,7 +49,6 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
             ){
                 BotaoMenu(navController)
                 Spacer(modifier = Modifier.weight(1f))
-                // inserir imagem perfil
                 IconeUsuario(
                     modifier = Modifier,
                 )
@@ -73,7 +72,6 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
             ) {
-                // Barra de pesquisa
                 CaixaDeEntrada(
                     placeholder = "Busca",
                     value = "",
@@ -85,7 +83,6 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                     atualizarValor = {
                     }
                 )
-                // Botão de filtros
                 Botao(
                     modifier = Modifier
                         .padding(top = 16.dp)
