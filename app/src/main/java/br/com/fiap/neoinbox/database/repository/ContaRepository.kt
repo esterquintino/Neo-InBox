@@ -26,4 +26,5 @@ class ContaRepository (context: Context) {
     fun recuperarSenha(conta: Conta): Int{
         return db.recuperarSenha(conta = conta)
     }
+
 }

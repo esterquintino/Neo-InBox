@@ -28,15 +28,22 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import br.com.fiap.neoinbox.R
+import br.com.fiap.neoinbox.database.repository.ContaRepository
 
 @Composable
-fun MenuOverlay(onDismiss: () -> Unit) {
+fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
+
+    val context = LocalContext.current
+    val contaRepository = ContaRepository(context)
+
     Box(
         modifier = Modifier
             .fillMaxHeight()
@@ -88,12 +95,13 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Caixa de entrada",
                     modifier = Modifier
-                        .clickable { onDismiss() }
+                        .clickable {
+                            onDismiss()
+                            navController.navigate("entrada") }
                         .fillMaxWidth()
                         .background(Color(0xFF2F2F2F))
                         .padding(10.dp),
@@ -103,7 +111,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Favoritos",
@@ -118,7 +125,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Rascunhos",
@@ -133,7 +139,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Spam",
@@ -148,7 +153,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Lixeira",
@@ -170,7 +174,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Pastas",
@@ -192,7 +195,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Agenda",
@@ -214,7 +216,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Configurações",
@@ -236,7 +237,6 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .height(32.dp)
             ) {
                 Text(
                     text = "Sair da conta",
@@ -250,31 +250,4 @@ fun MenuOverlay(onDismiss: () -> Unit) {
             }
         }
     }
-}
-
-
-//fun Modifier.drawOneSideBorder(
-//    width: Dp,
-//    color: Color,
-//    shape: Shape = RectangleShape
-//) = this
-//    .clip(shape)
-//    .drawWithContent {
-//        val widthPx = width.toPx()
-//        drawContent()
-//        drawLine(
-//            color = color,
-//            start = Offset(widthPx / 2, 0f),
-//            end = Offset(widthPx / 2, size.height),
-//            strokeWidth = widthPx
-//        )
-//    }
-
-@Preview
-@Composable
-private fun MenuOverlayPreview() {
-    MenuOverlay {
-//        exibirMenu = false
-    }
-
 }

@@ -8,15 +8,21 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.navigation.NavController
 import br.com.fiap.neoinbox.R
+import br.com.fiap.neoinbox.database.repository.ContaRepository
 
 @Composable
 fun BotaoMenu() {
     var exibirMenu by remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+    val contaRepository = ContaRepository(context)
 
     Box(
         modifier = Modifier
@@ -36,7 +42,7 @@ fun BotaoMenu() {
                 modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.TopStart
             ) {
-                MenuOverlay {
+                MenuOverlay(navController = NavController(context)) {
                     exibirMenu = false
                 }
             }

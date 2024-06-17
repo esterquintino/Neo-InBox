@@ -1,5 +1,6 @@
 package br.com.fiap.neoinbox
 
+import UserPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -7,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHost
 import androidx.navigation.compose.NavHost
@@ -23,9 +26,14 @@ import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreenViewModel
 import br.com.fiap.neoinbox.RedefinicaoSenha.RedefinicaoSenhaScreen
 import br.com.fiap.neoinbox.ui.theme.NeoInboxTheme
 
+val LocalUserPreferences = staticCompositionLocalOf<UserPreferences> {
+    error("UserPreferences not provided")
+}
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val userPreferences = UserPreferences(applicationContext)
         setContent {
             NeoInboxTheme {
                 // A surface container using the 'background' color from the theme
@@ -33,7 +41,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavHost()
+                    CompositionLocalProvider(LocalUserPreferences provides userPreferences) {
+                        AppNavHost()
+                    }
                 }
             }
         }
@@ -42,13 +52,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppNavHost(){
+
     val navController = rememberNavController()
+    val userPreferences = LocalUserPreferences.current
+
     NavHost(
         navController = navController,
         startDestination = "entrar"
     ) {
         composable("entrar") {
-            EntrarScreen(navController = navController, entrarScreenViewModel = EntrarScreenViewModel())
+            EntrarScreen(navController = navController, entrarScreenViewModel = EntrarScreenViewModel(userPreferences))
         }
         composable("recuperarSenha") {
             RecuperarSenhaScreen(navController = navController, recuperarSenhaScreenViewModel = RecuperarSenhaScreenViewModel())
@@ -60,7 +73,7 @@ fun AppNavHost(){
             CadastroScreen(navController = navController, cadastroScreenViewModel = CadastroScreenViewModel())
         }
         composable("entrada") {
-            EntradaScreen(navController = navController, entradaScreenViewModel = EntradaScreenViewModel())
+            EntradaScreen(navController = navController, entradaScreenViewModel = EntradaScreenViewModel(userPreferences))
         }
         // Outras rotas
     }
