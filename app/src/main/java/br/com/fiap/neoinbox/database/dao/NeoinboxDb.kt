@@ -5,23 +5,25 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import br.com.fiap.neoinbox.model.Conta
+import br.com.fiap.neoinbox.model.Evento
 
-@Database(entities = [Conta::class], version = 1)
-abstract class ContaDb : RoomDatabase() {
+@Database(entities = [Conta::class, Evento::class], version = 1)
+abstract class NeoinboxDb : RoomDatabase() {
 
     abstract fun contaDao(): ContaDao
+    abstract fun eventoDao(): EventoDao
 
     companion object {
 
-        private lateinit var instance: ContaDb
+        private lateinit var instance: NeoinboxDb
 
-        fun getDatabase(context: Context): ContaDb {
+        fun getDatabase(context: Context): NeoinboxDb {
             if (!::instance.isInitialized) {
                 instance = Room
                     .databaseBuilder(
                         context,
-                        ContaDb::class.java,
-                        "conta_db"
+                        NeoinboxDb::class.java,
+                        "neoinbox_db"
                     )
                     .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
