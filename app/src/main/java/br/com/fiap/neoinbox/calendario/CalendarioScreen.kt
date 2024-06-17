@@ -32,7 +32,7 @@ import java.util.Date
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CalendarioScreen(
-//    navController: NavController,
+    navController: NavController,
     calendarioScreenViewModel: CalendarioScreenViewModel
 ) {
     var date by remember { mutableStateOf("") }
@@ -68,8 +68,8 @@ fun CalendarioScreen(
     )
 }
 
-@Preview
-@Composable
-private fun CalendarioScreenPreview() {
-    CalendarioScreen( calendarioScreenViewModel = CalendarioScreenViewModel())
-}
+//@Preview
+//@Composable
+//private fun CalendarioScreenPreview() {
+//    CalendarioScreen( calendarioScreenViewModel = CalendarioScreenViewModel())
+//}

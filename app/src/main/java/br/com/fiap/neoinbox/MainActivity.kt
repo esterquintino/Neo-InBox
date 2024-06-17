@@ -24,6 +24,8 @@ import br.com.fiap.neoinbox.entrar.EntrarScreenViewModel
 import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreen
 import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreenViewModel
 import br.com.fiap.neoinbox.RedefinicaoSenha.RedefinicaoSenhaScreen
+import br.com.fiap.neoinbox.calendario.CalendarioScreen
+import br.com.fiap.neoinbox.calendario.CalendarioScreenViewModel
 import br.com.fiap.neoinbox.ui.theme.NeoInboxTheme
 
 val LocalUserPreferences = staticCompositionLocalOf<UserPreferences> {
@@ -74,6 +76,9 @@ fun AppNavHost(){
         }
         composable("entrada") {
             EntradaScreen(navController = navController, entradaScreenViewModel = EntradaScreenViewModel(userPreferences))
+        }
+        composable("calendario") {
+            CalendarioScreen(navController = navController, calendarioScreenViewModel = CalendarioScreenViewModel(userPreferences))
         }
         // Outras rotas
     }
