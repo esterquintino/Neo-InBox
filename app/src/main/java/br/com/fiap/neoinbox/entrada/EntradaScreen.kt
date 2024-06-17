@@ -34,10 +34,21 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                 BotaoMenu()
                 // inserir imagem perfil
             }
-            Row {
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.Top
+            ) {
+                // Barra de pesquisa
+                // Botão de filtros
+            }
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.Top
+            ) {
                 //lógica de listagem de emails
                 for (i in 0..10){
                     EmailCard(){
+
                     }
 
                 }
