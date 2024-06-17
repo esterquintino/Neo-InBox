@@ -1,7 +1,5 @@
 package br.com.fiap.neoinbox.entrada
 
-import androidx.annotation.ContentView
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -31,6 +28,7 @@ import br.com.fiap.neoinbox.components.Botao
 import br.com.fiap.neoinbox.components.BotaoMenu
 import br.com.fiap.neoinbox.components.CaixaDeEntrada
 import br.com.fiap.neoinbox.components.EmailCard
+import br.com.fiap.neoinbox.components.EmailContent
 import br.com.fiap.neoinbox.components.IconeUsuario
 
 @Composable
@@ -47,16 +45,16 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                 .padding(20.dp),
             ){
             Row(
-                horizontalArrangement = Arrangement.SpaceAround,
+                horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.Top
             ){
                 BotaoMenu(navController)
-                // inserir imagem perfil
+                Spacer(modifier = Modifier.weight(1f))
                 IconeUsuario(
                     modifier = Modifier,
                 )
             }
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(48.dp))
             Row(
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
@@ -75,19 +73,17 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
             ) {
-                // Barra de pesquisa
                 CaixaDeEntrada(
                     placeholder = "Busca",
                     value = "",
                     keyboardType = KeyboardType.Text,
                     modifier = Modifier
                         .padding(top = 16.dp)
-                        .width(235.dp)
+                        .width(230.dp)
                         .height(50.dp),
                     atualizarValor = {
                     }
                 )
-                // Botão de filtros
                 Botao(
                     modifier = Modifier
                         .padding(top = 16.dp)
@@ -97,16 +93,22 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                     text = "Filtros"
                 )
             }
+            Spacer(modifier = Modifier.height(16.dp))
             Row(
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
             ) {
                 //lógica de listagem de emails
                 for (i in 0..10){
-                    EmailCard(){
-
+                    EmailCard(
+                        modifier = Modifier.padding(8.dp)
+                    ){
+                        EmailContent(
+                            sender = "Remetente $i",
+                            subject = "Assunto do email $i",
+                            preview = "Prévia do corpo do email $i"
+                        )
                     }
-
                 }
             }
         }
