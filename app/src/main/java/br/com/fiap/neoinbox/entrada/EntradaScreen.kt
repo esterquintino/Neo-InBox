@@ -28,6 +28,7 @@ import br.com.fiap.neoinbox.components.Botao
 import br.com.fiap.neoinbox.components.BotaoMenu
 import br.com.fiap.neoinbox.components.CaixaDeEntrada
 import br.com.fiap.neoinbox.components.EmailCard
+import br.com.fiap.neoinbox.components.EmailContent
 import br.com.fiap.neoinbox.components.IconeUsuario
 
 @Composable
@@ -53,7 +54,7 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                     modifier = Modifier,
                 )
             }
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(48.dp))
             Row(
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
@@ -92,16 +93,22 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                     text = "Filtros"
                 )
             }
+            Spacer(modifier = Modifier.height(16.dp))
             Row(
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
             ) {
                 //lógica de listagem de emails
                 for (i in 0..10){
-                    EmailCard(){
-
+                    EmailCard(
+                        modifier = Modifier.padding(8.dp)
+                    ){
+                        EmailContent(
+                            sender = "Remetente $i",
+                            subject = "Assunto do email $i",
+                            preview = "Prévia do corpo do email $i"
+                        )
                     }
-
                 }
             }
         }
