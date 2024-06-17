@@ -25,9 +25,9 @@ data class Evento(
     @ColumnInfo(name = "nm_evento")
     var nmEvento: String = "",
     @ColumnInfo(name = "dt_evento")
-    var dtEvento: Date,
+    var dtEvento: String,
     @ColumnInfo(name = "hr_evento")
-    var hrEvento: Int,
+    var hrEvento: String,
     @ColumnInfo(name = "cod_conta_fk")
     var codContaFK: Int
 )
