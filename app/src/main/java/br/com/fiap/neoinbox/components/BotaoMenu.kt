@@ -3,11 +3,13 @@ package br.com.fiap.neoinbox.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import br.com.fiap.neoinbox.R
@@ -30,9 +32,20 @@ fun BotaoMenu() {
 
     if (exibirMenu) {
         Dialog(onDismissRequest = { exibirMenu = false }) {
-            MenuOverlay{
-                exibirMenu = false
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.TopStart
+            ) {
+                MenuOverlay {
+                    exibirMenu = false
+                }
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun BotaoMenuPreview() {
+    BotaoMenu()
 }
