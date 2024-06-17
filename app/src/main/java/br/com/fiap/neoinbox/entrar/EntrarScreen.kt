@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import br.com.fiap.neoinbox.components.Botao
+import br.com.fiap.neoinbox.components.Fundo
 import br.com.fiap.neoinbox.database.repository.ContaRepository
 
 @Composable
@@ -50,7 +51,7 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
     val context = LocalContext.current
     val contaRepository = ContaRepository(context)
 
-    Box(
+    Fundo(
         modifier = Modifier
             .background(colorResource(id = R.color.azulclaro)),
         contentAlignment = Alignment.Center
