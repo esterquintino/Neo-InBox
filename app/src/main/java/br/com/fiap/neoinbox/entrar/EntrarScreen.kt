@@ -3,7 +3,6 @@ package br.com.fiap.neoinbox.entrar
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,17 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -33,7 +27,6 @@ import androidx.navigation.NavController
 import br.com.fiap.neoinbox.R
 import br.com.fiap.neoinbox.components.CaixaDeEntrada
 import br.com.fiap.neoinbox.components.Link
-import br.com.fiap.neoinbox.ui.theme.Inter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -58,7 +51,7 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp),
+                .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -107,17 +100,17 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
                 onclick = {
                     val (email, senha) = entrarScreenViewModel.entrarNaContaViewModel()
                     val entrarCheck = contaRepository.entrarNaConta(email, senha)
-                    if (entrarCheck > 0) navController.navigate("entrada")
+                    if(entrarCheck > 0) navController.navigate("EntradaScreen")
                 },
                 text = "Entrar"
             )
             Spacer(modifier = Modifier.height(32.dp))
             Link(
-                onclick = { navController.navigate("recuperarSenha") },
+                onclick = {navController.navigate("recuperarSenha")},
                 text = "Esqueceu sua senha?",
                 modifier = Modifier
                     .padding(4.dp),
-                fontfamily = FontFamily(Font(R.font.inter_medium)),
+                fontfamily = FontFamily(Font(R.font.inter_medium)) ,
                 fontsize = 16,
                 textcolor = colorResource(id = R.color.cinzaescuro),
                 textalign = TextAlign.Center,
@@ -130,7 +123,9 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
                 fontsize = 16,
                 textcolor = colorResource(id = R.color.cinzaescuro),
                 textalign = TextAlign.Center,
-                onclick = { navController.navigate("cadastro") }
+                onclick = {
+                    navController.navigate("cadastro")
+                }
             )
             Spacer(modifier = Modifier.height(32.dp))
             Row(
