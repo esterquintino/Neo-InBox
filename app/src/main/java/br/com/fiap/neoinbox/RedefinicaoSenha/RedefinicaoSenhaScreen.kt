@@ -1,4 +1,4 @@
-package br.com.fiap.neoinbox.recuperarSenha
+package br.com.fiap.neoinbox.RedefinicaoSenha
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -27,8 +25,7 @@ import br.com.fiap.neoinbox.components.CaixaDeEntrada
 import br.com.fiap.neoinbox.components.Fundo
 
 @Composable
-fun RecuperarSenhaScreen(navController: NavController, recuperarSenhaScreenViewModel: RecuperarSenhaScreenViewModel) {
-    val email by recuperarSenhaScreenViewModel.email.observeAsState(initial = "")
+fun RedefinicaoSenhaScreen(navController: NavController) {
 
     Fundo(
         modifier = Modifier
@@ -49,7 +46,7 @@ fun RecuperarSenhaScreen(navController: NavController, recuperarSenhaScreenViewM
             )
             Spacer(modifier = Modifier.height(32.dp))
             Text(
-                text = "Esqueceu sua senha?",
+                text = "Redefinir Senha",
                 modifier = Modifier.align(Alignment.Start),
                 style = TextStyle(
                     fontFamily = FontFamily(Font(R.font.inter_semibold)),
@@ -59,14 +56,26 @@ fun RecuperarSenhaScreen(navController: NavController, recuperarSenhaScreenViewM
             )
             Spacer(modifier = Modifier.height(32.dp))
             CaixaDeEntrada(
-                placeholder = "E-mail",
-                value = email,
-                keyboardType = KeyboardType.Email,
+                placeholder = "Código recebido",
+                value = "",
+                keyboardType = KeyboardType.Number,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp),
                 atualizarValor = {
-                    recuperarSenhaScreenViewModel.onEmailChanged(it)
+
+                }
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            CaixaDeEntrada(
+                placeholder = "Nova senha",
+                value = "",
+                keyboardType = KeyboardType.Password,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                atualizarValor = {
+
                 }
             )
             Spacer(modifier = Modifier.height(32.dp))
@@ -74,7 +83,7 @@ fun RecuperarSenhaScreen(navController: NavController, recuperarSenhaScreenViewM
                 modifier = Modifier
                     .padding(4.dp),
                 onclick = {
-                    navController.navigate("redefinicaoSenha")
+                    navController.navigate("entrar")
                 },
                 text = "Confirmar"
             )
