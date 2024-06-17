@@ -26,12 +26,12 @@ fun BotaoMenu() {
 
     Box(
         modifier = Modifier
-            .size(56.dp)
+            .size(32.dp)
             .clickable { exibirMenu = true },
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_menu),
+            painter = painterResource(id = R.drawable.button_menu),
             contentDescription = "Menu"
         )
     }
