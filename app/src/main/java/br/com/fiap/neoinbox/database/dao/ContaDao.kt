@@ -15,8 +15,14 @@ interface ContaDao {
     @Update
     fun atualizarConta(conta: Conta): Int
 
+    @Query("UPDATE tbl_conta SET senha = :senha WHERE end_email = :email")
+    fun redefinirSenha(email: String, senha: String): Int
+
     @Delete
     fun excluirConta(conta: Conta): Int
+
+    @Query("SELECT * FROM tbl_conta WHERE end_email = :email")
+    fun buscarConta(email: String): Conta
 
     @Query("SELECT COUNT(*) FROM tbl_conta WHERE end_email = :email AND senha = :senha")
     fun entrarNaConta(email: String, senha: String): Int

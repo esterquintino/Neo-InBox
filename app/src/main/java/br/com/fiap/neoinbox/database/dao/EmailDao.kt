@@ -19,6 +19,10 @@ interface EmailDao {
     @Update
     fun editarEmail(email: Email): Int
 
+    //Move o email de pasta
+    //    @Update
+    //fun moverEmail(email: Email)
+
     @Query("SELECT * FROM tbl_email WHERE cod_email = :codEmail AND cod_conta_fk = :codContaFK")
     fun verEmail(codEmail: Long, codContaFK: Long): Email
 

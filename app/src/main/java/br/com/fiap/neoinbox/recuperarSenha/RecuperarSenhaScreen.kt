@@ -74,7 +74,8 @@ fun RecuperarSenhaScreen(navController: NavController, recuperarSenhaScreenViewM
                 modifier = Modifier
                     .padding(4.dp),
                 onclick = {
-                    navController.navigate("redefinicaoSenha")
+                    val email = recuperarSenhaScreenViewModel.email
+                    navController.navigate("redefinicaoSenha/$email")
                 },
                 text = "Confirmar"
             )

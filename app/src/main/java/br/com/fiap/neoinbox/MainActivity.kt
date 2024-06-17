@@ -12,9 +12,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHost
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import br.com.fiap.neoinbox.cadastro.CadastroScreen
 import br.com.fiap.neoinbox.cadastro.CadastroScreenViewModel
 import br.com.fiap.neoinbox.entrada.EntradaScreen
@@ -24,6 +26,7 @@ import br.com.fiap.neoinbox.entrar.EntrarScreenViewModel
 import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreen
 import br.com.fiap.neoinbox.recuperarSenha.RecuperarSenhaScreenViewModel
 import br.com.fiap.neoinbox.RedefinicaoSenha.RedefinicaoSenhaScreen
+import br.com.fiap.neoinbox.RedefinicaoSenha.RedefinicaoSenhaScreenViewModel
 import br.com.fiap.neoinbox.calendario.CalendarioScreen
 import br.com.fiap.neoinbox.calendario.CalendarioScreenViewModel
 import br.com.fiap.neoinbox.ui.theme.NeoInboxTheme
@@ -68,8 +71,12 @@ fun AppNavHost(){
         composable("recuperarSenha") {
             RecuperarSenhaScreen(navController = navController, recuperarSenhaScreenViewModel = RecuperarSenhaScreenViewModel())
         }
-        composable("redefinicaoSenha") {
-            RedefinicaoSenhaScreen(navController = navController)
+        composable(
+            "redefinicaoSenha/{email}",
+            arguments = listOf(navArgument("email") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val emailRecebido = backStackEntry.arguments?.getString("email")
+            RedefinicaoSenhaScreen(navController = navController, redefinicaoSenhaScreenViewModel = RedefinicaoSenhaScreenViewModel(), email = emailRecebido)
         }
         composable("cadastro") {
             CadastroScreen(navController = navController, cadastroScreenViewModel = CadastroScreenViewModel())
