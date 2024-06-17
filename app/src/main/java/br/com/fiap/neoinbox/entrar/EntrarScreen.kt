@@ -100,7 +100,7 @@ fun EntrarScreen(navController: NavController, entrarScreenViewModel: EntrarScre
                 onclick = {
                     val (email, senha) = entrarScreenViewModel.entrarNaContaViewModel()
                     val entrarCheck = contaRepository.entrarNaConta(email, senha)
-                    if(entrarCheck > 0) navController.navigate("EntradaScreen")
+                    if(entrarCheck > 0) navController.navigate("entrada")
                 },
                 text = "Entrar"
             )
