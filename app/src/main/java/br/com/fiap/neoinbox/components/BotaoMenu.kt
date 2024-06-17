@@ -18,7 +18,7 @@ import br.com.fiap.neoinbox.R
 import br.com.fiap.neoinbox.database.repository.ContaRepository
 
 @Composable
-fun BotaoMenu() {
+fun BotaoMenu(navController: NavController) {
     var exibirMenu by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
@@ -42,16 +42,10 @@ fun BotaoMenu() {
                 modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.TopStart
             ) {
-                MenuOverlay(navController = NavController(context)) {
+                MenuOverlay(navController) {
                     exibirMenu = false
                 }
             }
         }
     }
-}
-
-@Preview
-@Composable
-private fun BotaoMenuPreview() {
-    BotaoMenu()
 }

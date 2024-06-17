@@ -36,9 +36,9 @@ data class Email(
     @ColumnInfo(name = "end_destinatario")
     var endDestinatario: String = "",
     @ColumnInfo(name = "dt_email")
-    var dtEmail: LocalDate,
+    var dtEmail: String = "",
     @ColumnInfo(name = "hr_email")
-    var hrEmail: Int,
+    var hrEmail: String = "",
     @ColumnInfo(name = "end_destinatario_cc")
     var endDestinatarioCC: String = "",
     @ColumnInfo(name = "cod_pasta_fk")

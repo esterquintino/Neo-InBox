@@ -35,12 +35,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import br.com.fiap.neoinbox.LocalUserPreferences
 import br.com.fiap.neoinbox.R
 import br.com.fiap.neoinbox.database.repository.ContaRepository
 
 @Composable
 fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
 
+
+    val userPreferences = LocalUserPreferences.current
     val context = LocalContext.current
     val contaRepository = ContaRepository(context)
 
@@ -101,7 +105,7 @@ fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
                     modifier = Modifier
                         .clickable {
                             onDismiss()
-                            navController.navigate("entrada") }
+                            navController.navigate("entrarscreen") }
                         .fillMaxWidth()
                         .background(Color(0xFF2F2F2F))
                         .padding(10.dp),

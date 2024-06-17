@@ -11,6 +11,4 @@ data class Pasta(
     var codPasta: Int = 0,
     @ColumnInfo(name = "nm_pasta")
     var nmPasta: String = "",
-    @ColumnInfo(name = "tipo")
-    var tipo: TipoPasta
 )

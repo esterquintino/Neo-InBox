@@ -50,7 +50,7 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
             ){
-                BotaoMenu()
+                BotaoMenu(navController)
                 // inserir imagem perfil
                 IconeUsuario(
                     modifier = Modifier,
