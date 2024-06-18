@@ -38,16 +38,16 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
         modifier = Modifier
             .background(colorResource(id = R.color.areia)),
         contentAlignment = Alignment.TopStart
-    ){
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(20.dp),
-            ){
+        ) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.Top
-            ){
+            ) {
                 BotaoMenu(navController)
                 Spacer(modifier = Modifier.weight(1f))
                 IconeUsuario(
@@ -58,7 +58,7 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
             Row(
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalAlignment = Alignment.Top
-            ){
+            ) {
                 Text(
                     text = "Caixa de entrada",
                     style = TextStyle(
@@ -99,17 +99,70 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                 verticalAlignment = Alignment.Top
             ) {
                 //lógica de listagem de emails
-                for (i in 0..10){
-                    EmailCard(
-                        modifier = Modifier.padding(8.dp)
-                    ){
-                        EmailContent(
-                            sender = "Remetente $i",
-                            subject = "Assunto do email $i",
-                            preview = "Prévia do corpo do email $i"
-                        )
-                    }
+                EmailCard(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    EmailContent(
+                        sender = "Remetente",
+                        subject = "Assunto do email",
+                        preview = "Corpo do email"
+                    )
+//                    Spacer(modifier = Modifier.height(16.dp))
                 }
+            }
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.Top
+            ) {
+                //lógica de listagem de emails
+                EmailCard(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    EmailContent(
+                        sender = "Remetente",
+                        subject = "Assunto do email",
+                        preview = "Corpo do email"
+                    )
+//                    Spacer(modifier = Modifier.height(16.dp))
+                }
+            }
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.Top
+            ) {
+                //lógica de listagem de emails
+                EmailCard(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    EmailContent(
+                        sender = "Remetente",
+                        subject = "Assunto do email",
+                        preview = "Corpo do email"
+                    )
+//                    Spacer(modifier = Modifier.height(16.dp))
+                }
+            }
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.Top
+            ) {
+                //lógica de listagem de emails
+                EmailCard(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    EmailContent(
+                        sender = "Remetente",
+                        subject = "Assunto do email",
+                        preview = "Corpo do email"
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+            }
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.Bottom
+            ) {
+                //lógica botão escrever email
             }
         }
     }

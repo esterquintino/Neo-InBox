@@ -113,6 +113,21 @@ fun CalendarioScreen(
                 })
                 Text(text = date)
             }
+            Row (
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.Top
+            ){
+                Botao(
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .height(55.dp)
+                        .width(200.dp),
+                    onclick = {
+
+                    },
+                    text = "Adicionar evento"
+                )
+            }
         }
     }
 
