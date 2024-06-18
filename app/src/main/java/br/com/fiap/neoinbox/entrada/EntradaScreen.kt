@@ -37,7 +37,7 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
     Box(
         modifier = Modifier
             .background(colorResource(id = R.color.areia)),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.TopStart
     ){
         Column(
             modifier = Modifier

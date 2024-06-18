@@ -105,7 +105,7 @@ fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
                     modifier = Modifier
                         .clickable {
                             onDismiss()
-                            navController.navigate("entrarscreen") }
+                            navController.navigate("entrada") }
                         .fillMaxWidth()
                         .background(Color(0xFF2F2F2F))
                         .padding(10.dp),
@@ -201,9 +201,12 @@ fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = "Agenda",
+                    text = "Calendario",
                     modifier = Modifier
-                        .clickable { onDismiss() }
+                        .clickable {
+                            onDismiss()
+                            navController.navigate("calendario")
+                        }
                         .fillMaxWidth()
                         .background(Color(0xFF2F2F2F))
                         .padding(10.dp),
@@ -245,7 +248,10 @@ fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
                 Text(
                     text = "Sair da conta",
                     modifier = Modifier
-                        .clickable { onDismiss() }
+                        .clickable {
+                            onDismiss()
+                            navController.navigate("entrar")
+                        }
                         .fillMaxWidth()
                         .background(Color(0xFF2F2F2F))
                         .padding(10.dp),
