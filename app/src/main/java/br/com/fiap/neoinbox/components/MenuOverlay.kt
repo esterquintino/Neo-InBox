@@ -31,6 +31,10 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -76,13 +80,20 @@ fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
                         text = "Tipo de conta",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = 10.dp)
+                            .padding(bottom = 10.dp),
+                        style = TextStyle(
+                            fontFamily = FontFamily(Font(R.font.inter_semibold)),
+                            fontWeight = FontWeight.Bold
+                        )
                     )
                     Text(
-                        text = "endereço de email",
+                        text = "Endereço de e-mail",
                         modifier = Modifier
                             .clickable { onDismiss() }
-                            .fillMaxWidth()
+                            .fillMaxWidth(),
+                        style = TextStyle(
+                            fontFamily = FontFamily(Font(R.font.inter_medium)),
+                        )
                     )
                 }
                 Column() {
@@ -201,7 +212,7 @@ fun MenuOverlay(navController: NavController, onDismiss: () -> Unit) {
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = "Calendario",
+                    text = "Calendário",
                     modifier = Modifier
                         .clickable {
                             onDismiss()
