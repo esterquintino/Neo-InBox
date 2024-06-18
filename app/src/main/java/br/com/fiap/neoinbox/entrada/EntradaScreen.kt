@@ -52,6 +52,9 @@ fun EntradaScreen(navController: NavController, entradaScreenViewModel: EntradaS
                 Spacer(modifier = Modifier.weight(1f))
                 IconeUsuario(
                     modifier = Modifier,
+                    onclick = {
+                        navController.navigate("conta")
+                    }
                 )
             }
             Spacer(modifier = Modifier.height(48.dp))

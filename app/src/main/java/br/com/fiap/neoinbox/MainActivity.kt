@@ -29,6 +29,7 @@ import br.com.fiap.neoinbox.RedefinicaoSenha.RedefinicaoSenhaScreen
 import br.com.fiap.neoinbox.RedefinicaoSenha.RedefinicaoSenhaScreenViewModel
 import br.com.fiap.neoinbox.calendario.CalendarioScreen
 import br.com.fiap.neoinbox.calendario.CalendarioScreenViewModel
+import br.com.fiap.neoinbox.contaUsuario.ContaUsuarioScreen
 import br.com.fiap.neoinbox.ui.theme.NeoInboxTheme
 
 val LocalUserPreferences = staticCompositionLocalOf<UserPreferences> {
@@ -86,6 +87,9 @@ fun AppNavHost(){
         }
         composable("calendario") {
             CalendarioScreen(navController = navController, calendarioScreenViewModel = CalendarioScreenViewModel(userPreferences))
+        }
+        composable("conta") {
+            ContaUsuarioScreen(navController = navController)
         }
         // Outras rotas
     }
